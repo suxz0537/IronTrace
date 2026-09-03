@@ -1,0 +1,18 @@
+.exercise-add-page {
+  min-height: 100vh;
+  background-color: #f7f8fa;
+}
+
+.save-btn {
+  font-size: 28rpx;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.page-content {
+  padding: 24rpx 0;
+}
+
+.form-group {
+  margin-bottom: 24rpx;
+}

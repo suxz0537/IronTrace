@@ -1,0 +1,62 @@
+{
+  "pages": [
+    "pages/training/index",
+    "pages/exercise-list/index",
+    "pages/training-detail/index",
+    "pages/exercise-detail/index",
+    "pages/exercise-add/index",
+    "pages/history-list/index",
+    "pages/history-detail/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#1989fa",
+    "navigationBarTitleText": "铁迹 IronTrace",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#f7f8fa"
+  },
+  "tabBar": {
+    "color": "#646566",
+    "selectedColor": "#1989fa",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/training/index",
+        "text": "训练",
+        "iconPath": "assets/tabbar/training.png",
+        "selectedIconPath": "assets/tabbar/training-active.png"
+      },
+      {
+        "pagePath": "pages/exercise-list/index",
+        "text": "动作库",
+        "iconPath": "assets/tabbar/exercise.png",
+        "selectedIconPath": "assets/tabbar/exercise-active.png"
+      }
+    ]
+  },
+  "usingComponents": {
+    "van-button": "@vant/weapp/button/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-cell-group": "@vant/weapp/cell-group/index",
+    "van-field": "@vant/weapp/field/index",
+    "van-picker": "@vant/weapp/picker/index",
+    "van-popup": "@vant/weapp/popup/index",
+    "van-search": "@vant/weapp/search/index",
+    "van-stepper": "@vant/weapp/stepper/index",
+    "van-switch": "@vant/weapp/switch/index",
+    "van-tag": "@vant/weapp/tag/index",
+    "van-dialog": "@vant/weapp/dialog/index",
+    "van-toast": "@vant/weapp/toast/index",
+    "van-empty": "@vant/weapp/empty/index",
+    "van-nav-bar": "@vant/weapp/nav-bar/index",
+    "van-card": "@vant/weapp/card/index",
+    "van-submit-bar": "@vant/weapp/submit-bar/index",
+    "van-swipe-cell": "@vant/weapp/swipe-cell/index",
+    "van-divider": "@vant/weapp/divider/index",
+    "van-notify": "@vant/weapp/notify/index",
+    "van-sticky": "@vant/weapp/sticky/index"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

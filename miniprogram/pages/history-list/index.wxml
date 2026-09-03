@@ -1,0 +1,77 @@
+<view class="history-list-page">
+  <view class="page-header" style="padding-top: {{statusBarHeight}}px;">
+    <van-nav-bar
+      title="历史训练"
+      left-arrow
+      bind:click-left="onBack"
+    />
+  </view>
+
+  <scroll-view
+    class="page-content"
+    wx:if="{{!isEmpty}}"
+    scroll-y
+    enhanced
+    show-scrollbar="{{false}}"
+  >
+    <view
+      wx:for="{{list}}"
+      wx:key="_id"
+      class="list-item-wrap"
+    >
+      <van-swipe-cell
+        class="session-swipe-cell"
+      >
+        <view
+          class="session-card-clickable"
+          data-id="{{item._id}}"
+          bindtap="onItemTap"
+        >
+          <van-card class="session-card">
+            <view slot="title" class="session-title-row">
+              <text class="session-date">{{item.dateStr}}</text>
+              <van-tag type="primary" size="medium" plain>{{item.exerciseCount}} 动作</van-tag>
+            </view>
+            <view slot="desc">
+              <view class="session-meta-row">
+                <view class="meta-item">
+                  <view class="meta-label">时长</view>
+                  <view class="meta-value">{{item.durationStr}}</view>
+                </view>
+                <view class="meta-divider"></view>
+                <view class="meta-item">
+                  <view class="meta-label">容量</view>
+                  <view class="meta-value meta-value-accent">{{item.volumeStr}}</view>
+                </view>
+                <view class="meta-divider"></view>
+                <view class="meta-item">
+                  <view class="meta-label">组数</view>
+                  <view class="meta-value">{{item.totalSets}}</view>
+                </view>
+              </view>
+            </view>
+          </van-card>
+        </view>
+        <view slot="right" class="swipe-action">
+          <view
+            class="delete-btn"
+            data-id="{{item._id}}"
+            catchtap="onDelete"
+          >
+            删除
+          </view>
+        </view>
+      </van-swipe-cell>
+      <van-divider />
+    </view>
+    <view class="content-bottom-space"></view>
+  </scroll-view>
+
+  <view class="page-content" wx:else>
+    <van-empty
+      class="empty-state"
+      description="还没有训练记录，快去开始第一次训练吧"
+      image="default"
+    />
+  </view>
+</view>

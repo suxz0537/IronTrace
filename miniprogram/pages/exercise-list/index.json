@@ -1,0 +1,13 @@
+{
+  "usingComponents": {
+    "van-search": "@vant/weapp/search/index",
+    "van-tag": "@vant/weapp/tag/index",
+    "van-cell-group": "@vant/weapp/cell-group/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-divider": "@vant/weapp/divider/index",
+    "van-empty": "@vant/weapp/empty/index",
+    "van-icon": "@vant/weapp/icon/index"
+  },
+  "navigationBarTitleText": "动作库",
+  "enablePullDownRefresh": false
+}

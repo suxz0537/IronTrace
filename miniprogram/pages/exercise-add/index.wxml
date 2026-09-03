@@ -1,0 +1,112 @@
+<view class="exercise-add-page">
+  <van-nav-bar
+    title="添加自定义动作"
+    left-text="返回"
+    left-arrow
+    bind:click-left="onBack"
+  >
+    <view slot="right" class="save-btn" bindtap="onSave">保存</view>
+  </van-nav-bar>
+
+  <view class="page-content">
+    <van-cell-group inset class="form-group">
+      <van-field
+        label="名称"
+        value="{{ name }}"
+        placeholder="请输入动作名称"
+        required
+        error-message="{{ nameError }}"
+        bind:change="onNameChange"
+        bind:blur="onNameBlur"
+        maxlength="30"
+      />
+
+      <van-cell
+        title="部位"
+        is-link
+        value="{{ bodyPartLabel }}"
+        bind:click="onShowBodyPartPicker"
+      />
+
+      <van-cell
+        title="器械"
+        is-link
+        value="{{ equipmentLabel }}"
+        bind:click="onShowEquipmentPicker"
+      />
+
+      <van-cell
+        title="类型"
+        is-link
+        value="{{ typeLabel }}"
+        bind:click="onShowTypePicker"
+      />
+    </van-cell-group>
+
+    <van-divider />
+
+    <van-cell-group inset class="form-group">
+      <van-field
+        label="说明"
+        type="textarea"
+        value="{{ instructions }}"
+        placeholder="请输入动作说明（可选）"
+        autosize
+        maxlength="500"
+        show-word-limit
+        bind:change="onInstructionsChange"
+      />
+    </van-cell-group>
+  </view>
+
+  <van-popup
+    show="{{ showBodyPartPicker }}"
+    position="bottom"
+    round
+    bind:close="onBodyPartPickerCancel"
+  >
+    <van-picker
+      columns="{{ bodyPartOptions }}"
+      show-toolbar
+      title="选择部位"
+      value-key="label"
+      default-index="{{ bodyPartPickerIndex }}"
+      bind:confirm="onBodyPartPickerConfirm"
+      bind:cancel="onBodyPartPickerCancel"
+    />
+  </van-popup>
+
+  <van-popup
+    show="{{ showEquipmentPicker }}"
+    position="bottom"
+    round
+    bind:close="onEquipmentPickerCancel"
+  >
+    <van-picker
+      columns="{{ equipmentOptions }}"
+      show-toolbar
+      title="选择器械"
+      value-key="label"
+      default-index="{{ equipmentPickerIndex }}"
+      bind:confirm="onEquipmentPickerConfirm"
+      bind:cancel="onEquipmentPickerCancel"
+    />
+  </van-popup>
+
+  <van-popup
+    show="{{ showTypePicker }}"
+    position="bottom"
+    round
+    bind:close="onTypePickerCancel"
+  >
+    <van-picker
+      columns="{{ typeOptions }}"
+      show-toolbar
+      title="选择类型"
+      value-key="label"
+      default-index="{{ typePickerIndex }}"
+      bind:confirm="onTypePickerConfirm"
+      bind:cancel="onTypePickerCancel"
+    />
+  </van-popup>
+</view>

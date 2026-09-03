@@ -1,0 +1,75 @@
+.exercise-detail-page {
+  min-height: 100vh;
+  background-color: #f7f8fa;
+  padding-bottom: 120rpx;
+}
+
+.page-content {
+  padding: 24rpx 0;
+}
+
+.exercise-header {
+  padding: 40rpx 32rpx 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+}
+
+.exercise-name {
+  font-size: 40rpx;
+  font-weight: 600;
+  color: #323233;
+  flex: 1;
+}
+
+.exercise-type-tag {
+  margin-left: 16rpx;
+  flex-shrink: 0;
+}
+
+.info-group {
+  margin-top: 0;
+}
+
+.instructions-section {
+  margin-top: 24rpx;
+  padding: 32rpx;
+  background-color: #ffffff;
+}
+
+.section-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #323233;
+  margin-bottom: 20rpx;
+}
+
+.instructions-content {
+  font-size: 28rpx;
+  color: #646566;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.instructions-empty {
+  font-size: 28rpx;
+  color: #969799;
+  line-height: 1.8;
+}
+
+.page-footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 24rpx 32rpx calc(24rpx + env(safe-area-inset-bottom));
+  background-color: #ffffff;
+  box-shadow: 0 -2rpx 12rpx rgba(0, 0, 0, 0.04);
+}
+
+.add-btn {
+  height: 88rpx;
+  font-size: 32rpx;
+}

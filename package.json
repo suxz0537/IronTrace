@@ -1,0 +1,26 @@
+{
+  "name": "iron-trace",
+  "version": "1.0.0",
+  "description": "铁迹 IronTrace - 微信小程序健身记录工具",
+  "main": "miniprogram/app.ts",
+  "scripts": {
+    "build:miniprogram": "echo 'Please use WeChat DevTools to build'",
+    "lint": "echo 'TODO: add eslint/prettier'"
+  },
+  "keywords": [
+    "wechat",
+    "miniprogram",
+    "fitness",
+    "workout",
+    "training"
+  ],
+  "author": "IronTrace",
+  "license": "MIT",
+  "dependencies": {
+    "@vant/weapp": "^1.11.7"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "miniprogram-api-typings": "^3.12.0"
+  }
+}

@@ -1,0 +1,44 @@
+<view class="training-page">
+  <view class="section history-section">
+    <view class="section-header">
+      <view class="section-title">训练历史</view>
+      <van-button plain type="primary" size="small" bind:click="onGoHistoryList">
+        查看全部
+      </van-button>
+    </view>
+
+    <block wx:if="{{lastSession}}">
+      <van-card
+        class="last-session-card"
+        title="{{lastSessionDate}}"
+        desc="{{lastSessionDesc}}"
+        thumb=""
+        bind:click="onGoLastSessionDetail"
+      >
+        <view slot="tags">
+          <van-tag plain type="primary">时长 {{lastSessionDuration}}</van-tag>
+          <van-tag plain type="success" style="margin-left: 8rpx;">容量 {{lastSessionVolume}}</van-tag>
+        </view>
+        <view slot="footer">
+          <van-button size="mini" type="primary" plain block>查看详情</van-button>
+        </view>
+      </van-card>
+    </block>
+
+    <block wx:else>
+      <van-empty description="暂无训练记录" />
+    </block>
+  </view>
+
+  <view class="section action-section">
+    <van-button
+      type="primary"
+      size="large"
+      block
+      round
+      bind:click="onStartTraining"
+    >
+      开始训练
+    </van-button>
+  </view>
+</view>

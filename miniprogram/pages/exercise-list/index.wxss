@@ -1,0 +1,92 @@
+.exercise-list-page {
+  min-height: 100vh;
+  background-color: #f7f8fa;
+}
+
+.page-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: #f7f8fa;
+  padding-bottom: 8rpx;
+}
+
+.search-bar {
+  padding: 16rpx 24rpx 8rpx;
+}
+
+.add-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48rpx;
+  height: 48rpx;
+  padding: 0 8rpx;
+}
+
+.body-part-scroll {
+  white-space: nowrap;
+  padding: 8rpx 24rpx 16rpx;
+}
+
+.body-part-tags {
+  display: inline-flex;
+  gap: 16rpx;
+  padding-right: 24rpx;
+}
+
+.body-part-tag {
+  flex-shrink: 0;
+  font-size: 26rpx;
+}
+
+.page-content {
+  padding: 8rpx 0 32rpx;
+}
+
+.exercise-group {
+  margin-bottom: 8rpx;
+}
+
+.group-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24rpx 24rpx 16rpx;
+}
+
+.group-title-line {
+  width: 60rpx;
+  height: 2rpx;
+  background-color: #dcdee0;
+}
+
+.group-title-text {
+  margin: 0 20rpx;
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #323233;
+}
+
+.exercise-cell-group {
+  margin: 0 24rpx;
+}
+
+.exercise-cell {
+  padding: 24rpx 32rpx;
+}
+
+.exercise-labels {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  margin-top: 8rpx;
+}
+
+.type-tag {
+  margin-left: 0;
+}
+
+.empty-state {
+  margin-top: 200rpx;
+}

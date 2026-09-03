@@ -1,0 +1,72 @@
+<view class="exercise-list-page">
+  <view class="page-header">
+    <van-search
+      class="search-bar"
+      value="{{ keyword }}"
+      placeholder="搜索动作名称或拼音首字母"
+      shape="round"
+      bind:search="onSearch"
+      bind:change="onSearchChange"
+      bind:clear="onClearSearch"
+      show-action
+    >
+      <view slot="action" class="add-btn" bindtap="onGoAddExercise">
+        <van-icon name="plus" size="24px" color="#1989fa" />
+      </view>
+    </van-search>
+
+    <scroll-view class="body-part-scroll" scroll-x enhanced show-scrollbar="{{ false }}">
+      <view class="body-part-tags">
+        <van-tag
+          wx:for="{{ bodyPartOptions }}"
+          wx:key="value"
+          class="body-part-tag {{ activeBodyPart === item.value ? 'tag-active' : '' }}"
+          type="{{ activeBodyPart === item.value ? 'primary' : 'default' }}"
+          plain="{{ activeBodyPart !== item.value }}"
+          round
+          data-value="{{ item.value }}"
+          bind:click="onSelectBodyPart"
+        >
+          {{ item.label }}
+        </van-tag>
+      </view>
+    </scroll-view>
+  </view>
+
+  <view class="page-content" wx:if="{{ !isEmpty }}">
+    <view wx:for="{{ groupedExercises }}" wx:key="bodyPart" class="exercise-group">
+      <view class="group-title">
+        <view class="group-title-line"></view>
+        <text class="group-title-text">{{ item.bodyPartLabel }}</text>
+        <view class="group-title-line"></view>
+      </view>
+
+      <van-cell-group inset class="exercise-cell-group">
+        <van-cell
+          wx:for="{{ item.data }}"
+          wx:for-item="exercise"
+          wx:key="_id"
+          class="exercise-cell"
+          title="{{ exercise.name }}"
+          data-id="{{ exercise._id }}"
+          bind:click="onGoExerciseDetail"
+          is-link
+        >
+          <view slot="label" class="exercise-labels">
+            <van-tag type="primary" size="medium" plain>{{ exercise.equipmentLabel }}</van-tag>
+            <van-tag
+              type="{{ exercise.type === 'compound' ? 'warning' : 'success' }}"
+              size="medium"
+              class="type-tag"
+            >
+              {{ exercise.typeLabel }}
+            </van-tag>
+          </view>
+        </van-cell>
+      </van-cell-group>
+      <van-divider />
+    </view>
+  </view>
+
+  <van-empty wx:else description="暂无匹配的动作" class="empty-state" />
+</view>

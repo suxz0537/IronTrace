@@ -1,0 +1,150 @@
+<view class="history-detail-page">
+  <view class="page-header" style="padding-top: {{statusBarHeight}}px;">
+    <van-nav-bar
+      title="训练详情"
+      left-arrow
+      bind:click-left="onBack"
+    />
+
+    <view class="session-summary">
+      <view class="summary-item">
+        <view class="summary-label">开始时间</view>
+        <view class="summary-value">{{startTimeStr}}</view>
+      </view>
+      <view class="summary-divider"></view>
+      <view class="summary-item">
+        <view class="summary-label">结束时间</view>
+        <view class="summary-value">{{endTimeStr}}</view>
+      </view>
+      <view class="summary-divider"></view>
+      <view class="summary-item">
+        <view class="summary-label">训练时长</view>
+        <view class="summary-value summary-value-accent">{{durationStr}}</view>
+      </view>
+    </view>
+  </view>
+
+  <scroll-view class="page-content" scroll-y enhanced show-scrollbar="{{false}}">
+    <van-cell-group inset class="meta-cell-group">
+      <van-cell title="训练容量" value="{{totalVolumeStr}}" />
+      <van-cell title="动作数" value="{{totalExercises}}" />
+      <van-cell title="总组数" value="{{totalSets}}" />
+    </van-cell-group>
+
+    <view class="section-title-row">
+      <view class="section-title-line"></view>
+      <text class="section-title-text">训练备注</text>
+      <view class="section-title-line"></view>
+    </view>
+    <van-cell-group inset class="note-cell-group">
+      <van-field
+        value="{{note}}"
+        readonly
+        border="{{false}}"
+        autosize
+        placeholder="无备注"
+        class="note-field"
+      />
+    </van-cell-group>
+
+    <view class="section-title-row">
+      <view class="section-title-line"></view>
+      <text class="section-title-text">训练内容</text>
+      <view class="section-title-line"></view>
+    </view>
+
+    <block wx:if="{{!isEmpty}}">
+      <view
+        wx:for="{{groupedSets}}"
+        wx:key="exerciseId"
+        class="exercise-card-wrap"
+      >
+        <van-card class="exercise-card">
+          <view slot="title" class="exercise-title-row">
+            <text class="exercise-name">{{item.exerciseName}}</text>
+            <van-tag plain type="primary" size="medium">{{item.sets.length}} 组</van-tag>
+          </view>
+
+          <view slot="desc">
+            <view class="set-list">
+              <view
+                wx:for="{{item.sets}}"
+                wx:for-item="set"
+                wx:key="_id"
+                class="set-row {{set.isWarmup ? 'warmup-bg' : ''}}"
+              >
+                <view class="set-no-col">
+                  <view class="set-no-circle {{set.isWarmup ? 'warmup' : ''}}">
+                    <text class="set-no-text">{{set.setNo}}</text>
+                  </view>
+                </view>
+
+                <view class="set-input-col">
+                  <view class="input-label">重量(kg)</view>
+                  <van-stepper
+                    class="set-stepper"
+                    value="{{set.weight}}"
+                    min="0"
+                    disabled
+                    theme="round"
+                  />
+                </view>
+
+                <view class="set-input-col">
+                  <view class="input-label">次数</view>
+                  <van-stepper
+                    class="set-stepper"
+                    value="{{set.reps}}"
+                    min="1"
+                    disabled
+                    theme="round"
+                  />
+                </view>
+
+                <view class="set-extra-col">
+                  <view class="extra-row">
+                    <view class="extra-item">
+                      <text class="extra-label">热身</text>
+                      <van-switch
+                        size="20"
+                        checked="{{set.isWarmup}}"
+                        disabled
+                      />
+                    </view>
+                    <view class="extra-item rpe-item">
+                      <text class="extra-label">RPE</text>
+                      <van-stepper
+                        class="rpe-stepper"
+                        value="{{set.rpe}}"
+                        min="1"
+                        max="10"
+                        disabled
+                        theme="round"
+                        placeholder="--"
+                      />
+                    </view>
+                  </view>
+                  <view class="volume-row">
+                    <text class="volume-text" wx:if="{{!set.isWarmup}}">{{set.volume}}</text>
+                    <van-tag wx:if="{{set.isWarmup}}" type="warning" plain size="medium">热身组</van-tag>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </van-card>
+        <van-divider />
+      </view>
+    </block>
+
+    <block wx:else>
+      <van-empty
+        class="empty-state"
+        description="该训练没有记录任何动作组"
+        image="default"
+      />
+    </block>
+
+    <view class="content-bottom-space"></view>
+  </scroll-view>
+</view>

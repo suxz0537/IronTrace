@@ -1,0 +1,181 @@
+<view class="training-detail-page">
+  <view class="page-header" style="padding-top: {{statusBarHeight}}px;">
+    <van-nav-bar
+      title="训练中"
+      left-arrow
+      bind:click-left="onBack"
+    >
+      <view slot="right" class="nav-right" bindtap="onGoAddExercise">
+        <text class="nav-right-text">+动作</text>
+      </view>
+    </van-nav-bar>
+
+    <view class="session-summary">
+      <view class="summary-item">
+        <view class="summary-label">开始时间</view>
+        <view class="summary-value">{{startTimeStr}}</view>
+      </view>
+      <view class="summary-divider"></view>
+      <view class="summary-item">
+        <view class="summary-label">当前容量</view>
+        <view class="summary-value summary-value-accent">{{totalVolumeStr}}</view>
+      </view>
+      <view class="summary-divider"></view>
+      <view class="summary-item">
+        <view class="summary-label">总组数</view>
+        <view class="summary-value">{{totalSets}}</view>
+      </view>
+    </view>
+  </view>
+
+  <scroll-view class="page-content" scroll-y enhanced show-scrollbar="{{false}}">
+    <block wx:if="{{!isEmpty}}">
+      <view
+        wx:for="{{groupedSets}}"
+        wx:key="exerciseId"
+        class="exercise-card-wrap"
+      >
+        <van-card class="exercise-card">
+          <view slot="title" class="exercise-title-row">
+            <text class="exercise-name">{{item.exerciseName}}</text>
+            <van-tag plain type="primary" size="medium">{{item.sets.length}} 组</van-tag>
+          </view>
+
+          <view slot="desc">
+            <view class="set-list">
+              <van-swipe-cell
+                wx:for="{{item.sets}}"
+                wx:for-item="set"
+                wx:key="_id"
+                class="set-swipe-cell"
+              >
+                <view class="set-row {{set.isWarmup ? 'warmup-bg' : ''}}">
+                  <view class="set-no-col">
+                    <view class="set-no-circle {{set.isWarmup ? 'warmup' : ''}}">
+                      <text class="set-no-text">{{set.setNo}}</text>
+                    </view>
+                  </view>
+
+                  <view class="set-input-col">
+                    <view class="input-label">重量(kg)</view>
+                    <van-stepper
+                      class="set-stepper"
+                      value="{{set.weight}}"
+                      min="0"
+                      max="1000"
+                      step="0.5"
+                      data-set-id="{{set._id}}"
+                      bind:change="onWeightChange"
+                      theme="round"
+                    />
+                  </view>
+
+                  <view class="set-input-col">
+                    <view class="input-label">次数</view>
+                    <van-stepper
+                      class="set-stepper"
+                      value="{{set.reps}}"
+                      min="1"
+                      step="1"
+                      data-set-id="{{set._id}}"
+                      bind:change="onRepsChange"
+                      theme="round"
+                    />
+                  </view>
+
+                  <view class="set-extra-col">
+                    <view class="extra-row">
+                      <view class="extra-item">
+                        <text class="extra-label">热身</text>
+                        <van-switch
+                          size="20"
+                          checked="{{set.isWarmup}}"
+                          data-set-id="{{set._id}}"
+                          bind:change="onWarmupChange"
+                        />
+                      </view>
+                      <view class="extra-item rpe-item">
+                        <text class="extra-label">RPE</text>
+                        <van-stepper
+                          class="rpe-stepper"
+                          value="{{set.rpe}}"
+                          min="1"
+                          max="10"
+                          step="1"
+                          data-set-id="{{set._id}}"
+                          bind:change="onRpeChange"
+                          theme="round"
+                          placeholder="--"
+                        />
+                      </view>
+                    </view>
+                    <view class="volume-row">
+                      <text class="volume-text" wx:if="{{!set.isWarmup}}">{{set.volume}}</text>
+                      <van-tag wx:if="{{set.isWarmup}}" type="warning" plain size="medium">热身组</van-tag>
+                    </view>
+                  </view>
+                </view>
+
+                <view slot="right" class="swipe-action">
+                  <view
+                    class="delete-btn"
+                    data-set-id="{{set._id}}"
+                    catchtap="onRemoveSet"
+                  >
+                    删除
+                  </view>
+                </view>
+              </van-swipe-cell>
+            </view>
+
+            <van-button
+              class="add-set-btn"
+              type="primary"
+              plain
+              size="small"
+              block
+              data-exercise-id="{{item.exerciseId}}"
+              bind:click="onAddSet"
+            >
+              + 添加组
+            </van-button>
+          </view>
+        </van-card>
+        <van-divider />
+      </view>
+    </block>
+
+    <block wx:else>
+      <van-empty
+        class="empty-state"
+        description="还没有添加动作，点击右上角 + 开始吧"
+        image="search"
+      />
+    </block>
+
+    <view class="content-bottom-space"></view>
+  </scroll-view>
+
+  <van-submit-bar
+    class="submit-bar"
+    price="0"
+    button-text="结束训练"
+    tip="{{isEmpty ? '添加动作后开始训练' : '共 ' + totalSets + ' 组，容量 ' + totalVolumeStr}}"
+    disabled="{{false}}"
+    safe-area-inset-bottom
+    bind:submit="onFinishSession"
+  >
+    <view class="note-input-wrap">
+      <van-field
+        class="note-input"
+        value="{{note}}"
+        type="textarea"
+        autosize
+        maxlength="200"
+        placeholder="训练备注（可选）"
+        border="{{false}}"
+        bind:change="onNoteChange"
+      />
+    </view>
+  </van-submit-bar>
+</view>

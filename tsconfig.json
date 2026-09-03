@@ -1,0 +1,39 @@
+{
+  "compilerOptions": {
+    "target": "ES2019",
+    "module": "CommonJS",
+    "lib": ["ES2019"],
+    "strict": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "declaration": false,
+    "sourceMap": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noImplicitReturns": false,
+    "noFallthroughCasesInSwitch": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["miniprogram/*"],
+      "@/types/*": ["miniprogram/types/*"],
+      "@/utils/*": ["miniprogram/utils/*"],
+      "@/data/*": ["miniprogram/data/*"],
+      "@/pages/*": ["miniprogram/pages/*"]
+    }
+  },
+  "include": [
+    "miniprogram/**/*.ts",
+    "miniprogram/**/*.d.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "miniprogram_npm"
+  ]
+}

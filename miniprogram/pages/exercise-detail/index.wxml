@@ -1,0 +1,54 @@
+<view class="exercise-detail-page">
+  <van-nav-bar
+    title="动作详情"
+    left-text="返回"
+    left-arrow
+    bind:click-left="onBack"
+  />
+
+  <view class="page-content" wx:if="{{ exercise }}">
+    <view class="exercise-header">
+      <text class="exercise-name">{{ name }}</text>
+      <view class="exercise-type-tag">
+        <van-tag
+          type="{{ type === 'compound' ? 'warning' : 'success' }}"
+          size="medium"
+          round
+        >
+          {{ typeLabel }}
+        </van-tag>
+      </view>
+    </view>
+
+    <van-divider />
+
+    <van-cell-group inset class="info-group">
+      <van-cell title="部位" value="{{ bodyPartLabel }}" />
+      <van-cell title="器械" value="{{ equipmentLabel }}" />
+    </van-cell-group>
+
+    <van-divider />
+
+    <view class="instructions-section" wx:if="{{ instructions }}">
+      <view class="section-title">动作说明</view>
+      <view class="instructions-content">{{ instructions }}</view>
+    </view>
+
+    <view class="instructions-section" wx:else>
+      <view class="section-title">动作说明</view>
+      <view class="instructions-empty">暂无动作说明</view>
+    </view>
+  </view>
+
+  <view class="page-footer" wx:if="{{ isPickMode }}">
+    <van-button
+      type="primary"
+      block
+      round
+      class="add-btn"
+      bind:click="onAddToSession"
+    >
+      添加到本次训练
+    </van-button>
+  </view>
+</view>
