@@ -1,0 +1,13 @@
+const double kWeightMin = 0.0;
+const double kWeightMax = 1000.0;
+const double kWeightStep = 0.5;
+const int kRepsMin = 1;
+const int kRepsMax = 100;
+const int kRpeMin = 1;
+const int kRpeMax = 10;
+const int kDefaultRestSec = 120;
+const int kMaxDurationMin = 240;
+const String kBuiltinPrefix = 'ex_';
+const String kCustomPrefix = 'custom_';
+const String kSessionPrefix = 'session_';
+const String kSetPrefix = 'set_';

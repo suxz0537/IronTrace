@@ -1,0 +1,64 @@
+const String kBuiltinExercisesJson = '''
+[
+  { "_id": "ex_bench_press", "name": "杠铃卧推", "bodyPart": "chest", "equipment": "barbell", "type": "compound", "isCustom": false, "instructions": "平躺在卧推凳上，双脚踩实地面，握距略宽于肩，下放至胸部后推起至手臂伸直，下放时吸气，推起时呼气。" },
+  { "_id": "ex_incline_barbell_press", "name": "上斜杠铃卧推", "bodyPart": "chest", "equipment": "barbell", "type": "compound", "isCustom": false, "instructions": "调节卧推凳至 30~45 度斜角，动作同杠铃卧推，侧重上胸刺激。" },
+  { "_id": "ex_decline_barbell_press", "name": "下斜杠铃卧推", "bodyPart": "chest", "equipment": "barbell", "type": "compound", "isCustom": false, "instructions": "调节卧推凳至 15~30 度下斜，动作同杠铃卧推，侧重下胸刺激。" },
+  { "_id": "ex_dumbbell_press", "name": "哑铃卧推", "bodyPart": "chest", "equipment": "dumbbell", "type": "compound", "isCustom": false, "instructions": "平躺在卧推凳上，双手各持哑铃于胸侧，推起至手臂伸直后控制下放，活动范围比杠铃更大。" },
+  { "_id": "ex_incline_dumbbell_press", "name": "上斜哑铃卧推", "bodyPart": "chest", "equipment": "dumbbell", "type": "compound", "isCustom": false, "instructions": "卧推凳 30~45 度倾斜，双手持哑铃做卧推，刺激上胸肌。" },
+  { "_id": "ex_dumbbell_fly", "name": "哑铃飞鸟", "bodyPart": "chest", "equipment": "dumbbell", "type": "isolation", "isCustom": false, "instructions": "平躺持哑铃，手臂微屈向两侧打开至胸肌有拉伸感，沿原轨迹合拢至起始位置，感受胸肌收缩。" },
+  { "_id": "ex_cable_crossover", "name": "绳索夹胸", "bodyPart": "chest", "equipment": "cable", "type": "isolation", "isCustom": false, "instructions": "站立龙门架中间，双手握对侧高位手柄，手臂微屈由上向下夹胸至双手相遇，控制还原。" },
+  { "_id": "ex_machine_chest_press", "name": "器械坐姿推胸", "bodyPart": "chest", "equipment": "machine", "type": "compound", "isCustom": false, "instructions": "坐于推胸器械，调节座椅高度使握把与胸中部齐平，双手推向前方至手臂伸直，控制还原。" },
+  { "_id": "ex_pec_deck", "name": "蝴蝶机夹胸", "bodyPart": "chest", "equipment": "machine", "type": "isolation", "isCustom": false, "instructions": "坐于蝴蝶机，双臂贴靠软垫，向中间合拢至胸肌完全收缩，控制张开至拉伸位。" },
+  { "_id": "ex_push_up", "name": "俯卧撑", "bodyPart": "chest", "equipment": "bodyweight", "type": "compound", "isCustom": false, "instructions": "双手撑地略宽于肩，身体保持一条直线，屈肘下放至胸贴地后推起。" },
+
+  { "_id": "ex_deadlift", "name": "硬拉", "bodyPart": "back", "equipment": "barbell", "type": "compound", "isCustom": false, "instructions": "杠铃贴近胫骨站立，屈髋屈膝握杠，背部始终平直，伸髋伸膝拉起至身体完全直立后控制下放。" },
+  { "_id": "ex_romanian_deadlift", "name": "罗马尼亚硬拉", "bodyPart": "back", "equipment": "barbell", "type": "compound", "isCustom": false, "instructions": "站立持杠铃，膝盖微锁，屈髋将杠铃沿腿前侧下放至小腿中段，感受腘绳肌拉伸后站起。" },
+  { "_id": "ex_barbell_row", "name": "杠铃俯身划船", "bodyPart": "back", "equipment": "barbell", "type": "compound", "isCustom": false, "instructions": "俯身约 45 度，背部挺直，持杠铃贴身划向下腹部，肩胛内收后控制下放。" },
+  { "_id": "ex_t_bar_row", "name": "T杠划船", "bodyPart": "back", "equipment": "barbell", "type": "compound", "isCustom": false, "instructions": "杠铃一端固定地面，俯身骑跨杠铃，另一端加装杠铃片，双手握把手拉向胸下，挤压背肌。" },
+  { "_id": "ex_one_arm_dumbbell_row", "name": "单臂哑铃划船", "bodyPart": "back", "equipment": "dumbbell", "type": "compound", "isCustom": false, "instructions": "单膝单手握凳支撑，另一手持哑铃，贴身划船至腰侧，肩胛后缩，两侧交替进行。" },
+  { "_id": "ex_lat_pulldown", "name": "高位下拉", "bodyPart": "back", "equipment": "machine", "type": "compound", "isCustom": false, "instructions": "坐于高位下拉器，握距宽于肩，核心收紧，将横杆拉下至上胸位置，挤压背阔肌后还原。" },
+  { "_id": "ex_cable_row", "name": "坐姿绳索划船", "bodyPart": "back", "equipment": "cable", "type": "compound", "isCustom": false, "instructions": "坐于划船机，双脚前踩，挺胸直背，拉手柄至腹部，肩胛内收后控制还原。" },
+  { "_id": "ex_pullup", "name": "引体向上", "bodyPart": "back", "equipment": "bodyweight", "type": "compound", "isCustom": false, "instructions": "双手正握单杠略宽于肩，核心收紧，拉至下巴过杠，控制下放至手臂完全伸直。" },
+  { "_id": "ex_chin_up", "name": "反握引体向上", "bodyPart": "back", "equipment": "bodyweight", "type": "compound", "isCustom": false, "instructions": "双手反握单杠与肩同宽，拉至下巴过杠，侧重背阔肌下部与肱二头肌。" },
+  { "_id": "ex_face_pull", "name": "绳索面拉", "bodyPart": "back", "equipment": "cable", "type": "isolation", "isCustom": false, "instructions": "龙门架绳索调至面部高度，外旋握绳，拉向额头方向，肩胛后缩，训练后束与斜方肌中下束。" },
+  { "_id": "ex_hyperextension", "name": "山羊挺身", "bodyPart": "back", "equipment": "machine", "type": "isolation", "isCustom": false, "instructions": "俯卧在罗马椅，脚勾前垫，双手抱头或胸前，屈髋俯身至背部弯曲再挺身至身体一条直线。" },
+
+  { "_id": "ex_squat", "name": "杠铃深蹲", "bodyPart": "legs", "equipment": "barbell", "type": "compound", "isCustom": false, "instructions": "双脚与肩同宽，脚尖略外展，杠铃置于斜方肌上部，屈髋屈膝下蹲至大腿至少平行地面，站起至直立。" },
+  { "_id": "ex_front_squat", "name": "颈前深蹲", "bodyPart": "legs", "equipment": "barbell", "type": "compound", "isCustom": false, "instructions": "杠铃架于肩前三角肌上，交叉握或翻腕支撑，保持躯干竖直下蹲至大腿平行，侧重股四头肌。" },
+  { "_id": "ex_leg_press", "name": "腿举", "bodyPart": "legs", "equipment": "machine", "type": "compound", "isCustom": false, "instructions": "仰卧于腿举机，双脚与肩同宽踩踏板，下放至大腿贴近腹部，蹬起至膝微屈，避免膝盖锁死。" },
+  { "_id": "ex_lunge", "name": "箭步蹲", "bodyPart": "legs", "equipment": "barbell", "type": "compound", "isCustom": false, "instructions": "肩负杠铃，一腿向前跨出下蹲至前后膝约 90 度，前脚蹬地还原，两侧交替。" },
+  { "_id": "ex_dumbbell_lunge", "name": "哑铃箭步蹲", "bodyPart": "legs", "equipment": "dumbbell", "type": "compound", "isCustom": false, "instructions": "双手持哑铃自然下垂，向前跨步蹲至 90 度，交替进行。" },
+  { "_id": "ex_leg_extension", "name": "腿屈伸", "bodyPart": "legs", "equipment": "machine", "type": "isolation", "isCustom": false, "instructions": "坐于腿屈伸器，双腿前靠滚垫，伸膝至腿完全伸直，缓慢下放，孤立股四头肌。" },
+  { "_id": "ex_leg_curl", "name": "腿弯举", "bodyPart": "legs", "equipment": "machine", "type": "isolation", "isCustom": false, "instructions": "俯卧或坐姿于腿弯举器，小腿勾住滚垫，屈膝尽量靠近臀部，控制下放。" },
+  { "_id": "ex_calf_raise", "name": "站姿提踵", "bodyPart": "legs", "equipment": "machine", "type": "isolation", "isCustom": false, "instructions": "站立于提踵机或史密斯架，前脚掌踩垫，提踵至最高点停顿 2 秒，缓慢下放低于平台。" },
+  { "_id": "ex_seated_calf_raise", "name": "坐姿提踵", "bodyPart": "legs", "equipment": "machine", "type": "isolation", "isCustom": false, "instructions": "坐于提踵机，大腿前压负重垫，前脚掌踩踏板，做提踵动作，侧重比目鱼肌。" },
+  { "_id": "ex_goblet_squat", "name": "壶铃高脚杯深蹲", "bodyPart": "legs", "equipment": "kettlebell", "type": "compound", "isCustom": false, "instructions": "双手抱壶铃置于胸前，下蹲至大腿平行地面，保持直立躯干站起。" },
+  { "_id": "ex_bulgarian_split_squat", "name": "保加利亚分腿蹲", "bodyPart": "legs", "equipment": "dumbbell", "type": "compound", "isCustom": false, "instructions": "后脚放凳上，前脚站立下蹲至前大腿平行地面，侧重单腿股四头肌与臀部。" },
+
+  { "_id": "ex_shoulder_press", "name": "哑铃推举", "bodyPart": "shoulders", "equipment": "dumbbell", "type": "compound", "isCustom": false, "instructions": "坐姿或站姿，双手持哑铃举至肩侧，掌心向前，推至头顶正上方，控制下放。" },
+  { "_id": "ex_overhead_press", "name": "杠铃直立推举", "bodyPart": "shoulders", "equipment": "barbell", "type": "compound", "isCustom": false, "instructions": "杠铃架于肩前，核心收紧，垂直向上推起至手臂完全伸直，缓慢下放还原。" },
+  { "_id": "ex_side_lateral_raise", "name": "哑铃侧平举", "bodyPart": "shoulders", "equipment": "dumbbell", "type": "isolation", "isCustom": false, "instructions": "站立双手持哑铃微屈肘，向两侧抬起至与肩齐平，控制下放，侧重三角肌中束。" },
+  { "_id": "ex_front_lateral_raise", "name": "哑铃前平举", "bodyPart": "shoulders", "equipment": "dumbbell", "type": "isolation", "isCustom": false, "instructions": "双手持哑铃于大腿前，微屈肘交替或同时向前抬起至肩高，侧重三角肌前束。" },
+  { "_id": "ex_bent_over_lateral_raise", "name": "俯身侧平举", "bodyPart": "shoulders", "equipment": "dumbbell", "type": "isolation", "isCustom": false, "instructions": "俯身约 45 度或平躺斜凳，双手持哑铃向两侧抬起，挤压三角肌后束。" },
+  { "_id": "ex_military_press", "name": "站姿推举", "bodyPart": "shoulders", "equipment": "barbell", "type": "compound", "isCustom": false, "instructions": "身体直立持杠铃至胸前，推举至头顶，全程核心稳定，可借助腿部力量做借力推举。" },
+
+  { "_id": "ex_barbell_curl", "name": "杠铃弯举", "bodyPart": "arms", "equipment": "barbell", "type": "isolation", "isCustom": false, "instructions": "站立双手正握杠铃与肩同宽，上臂贴身，屈肘弯举至胸前，控制下放。" },
+  { "_id": "ex_dumbbell_curl", "name": "哑铃弯举", "bodyPart": "arms", "equipment": "dumbbell", "type": "isolation", "isCustom": false, "instructions": "双手持哑铃自然下垂，掌心向前，屈肘弯举至最大收缩位，可交替进行。" },
+  { "_id": "ex_hammer_curl", "name": "锤式弯举", "bodyPart": "arms", "equipment": "dumbbell", "type": "isolation", "isCustom": false, "instructions": "双手持哑铃掌心相对，做弯举动作，侧重肱肌与肱桡肌。" },
+  { "_id": "ex_triceps_pushdown", "name": "绳索下压", "bodyPart": "arms", "equipment": "cable", "type": "isolation", "isCustom": false, "instructions": "面向龙门架，上臂贴身，双手握横杆向下压至手臂完全伸直，感受肱三头肌收缩。" },
+  { "_id": "ex_skull_crusher", "name": "仰卧杠铃臂屈伸", "bodyPart": "arms", "equipment": "barbell", "type": "isolation", "isCustom": false, "instructions": "平躺持曲杠或窄握直杠于胸前，屈肘下放杠铃至额头前方，伸直手臂还原。" },
+  { "_id": "ex_dips", "name": "双杠臂屈伸", "bodyPart": "arms", "equipment": "bodyweight", "type": "compound", "isCustom": false, "instructions": "双手撑双杠身体前倾约 30 度，屈肘下放至上臂与地面平行后推起。" },
+  { "_id": "ex_close_grip_bench", "name": "窄距卧推", "bodyPart": "arms", "equipment": "barbell", "type": "compound", "isCustom": false, "instructions": "握距与肩同宽或更窄做卧推，侧重肱三头肌，下放到胸中部时肘贴身。" },
+
+  { "_id": "ex_plank", "name": "平板支撑", "bodyPart": "core", "equipment": "bodyweight", "type": "isolation", "isCustom": false, "instructions": "前臂支撑，身体呈一条直线，核心收紧保持静止，不要塌腰或翘臀。" },
+  { "_id": "ex_crunch", "name": "仰卧卷腹", "bodyPart": "core", "equipment": "bodyweight", "type": "isolation", "isCustom": false, "instructions": "平躺屈膝，双手轻扶头侧，卷腹至肩背离地，下腹贴地，缓慢下放。" },
+  { "_id": "ex_hanging_leg_raise", "name": "悬垂举腿", "bodyPart": "core", "equipment": "bodyweight", "type": "isolation", "isCustom": false, "instructions": "悬垂单杠，核心收紧举腿至至少与地面平行，侧重下腹。" },
+  { "_id": "ex_russian_twist", "name": "俄罗斯转体", "bodyPart": "core", "equipment": "bodyweight", "type": "isolation", "isCustom": false, "instructions": "坐姿双脚离地，双手合掌左右转体触碰地面，可持哑铃负重。" },
+  { "_id": "ex_dead_bug", "name": "死虫式", "bodyPart": "core", "equipment": "bodyweight", "type": "isolation", "isCustom": false, "instructions": "平躺手臂与大腿垂直地面，交替伸展对侧手脚，保持下背始终贴地。" },
+
+  { "_id": "ex_treadmill_run", "name": "跑步机跑步", "bodyPart": "cardio", "equipment": "machine", "type": "isolation", "isCustom": false, "instructions": "调节跑步机速度与坡度，保持均匀呼吸与正确姿势，注意关节缓冲。" },
+  { "_id": "ex_rower", "name": "划船机", "bodyPart": "cardio", "equipment": "machine", "type": "compound", "isCustom": false, "instructions": "抓握手柄，先伸腿再后仰最后拉桨至胸下，沿反顺序还原。" },
+  { "_id": "ex_kettlebell_swing", "name": "壶铃摇摆", "bodyPart": "full_body", "equipment": "kettlebell", "type": "compound", "isCustom": false, "instructions": "双脚与肩同宽，壶铃放体前，屈髋摆起壶铃至胸前，臀部发力带动髋伸展。" }
+]
+'''
+;
